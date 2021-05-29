@@ -60,7 +60,8 @@ h1, h2, p {
 .block h1 {
     transform: skewX(30deg);
     text-shadow: 0 0 5px #1c1c1c;
-    line-height: 100vh;
+    font-size: 32px;
+    margin-top: calc(50vh - 16px);
     text-align: center;
     position: absolute;
     transition: transform linear 300ms;
