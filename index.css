@@ -15,126 +15,78 @@ h1, h2, p {
     cursor: default;
 }
 
-#me {
-    width: 100%;
-    position: absolute;
-    top: 5%;
-    left: 0;
-}
-
-.welcome {
-    color: whitesmoke;
-    text-align: center;
-    animation: popIn;
-    animation-duration: 500ms;
-    animation-delay: 350ms;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    opacity: 0;
-}
-
-.profile {
-    box-sizing: border-box;
-    border: 2px solid whitesmoke;
-    border-radius: 50%;
-    max-width: 128px;
-    vertical-align: middle;
-    transition: border linear 250ms;
-}
-
-.profile:hover {
-    border-width: 4px;
-    border-color: forestgreen;
-}
-
-.site-chooser {
-    opacity: 0;
-    margin: calc(50vh - 150px) auto 0;
-    width: 70vw;
-    height: 300px;
-    animation: popIn;
-    animation-duration: 500ms;
-    animation-delay: 500ms;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-
 .block {
-    display: inline-block;
-    transform: skew(-30deg, 0);
-    width: 50%;
-    transition: transform linear 250ms;
+    transform: skewX(-30deg);
+    width: 50vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    color: whitesmoke;
+    transition: transform linear 400ms;
+    cursor: pointer;
+    opacity: 0;
+    background-size: cover;
+    background-position: center;
+
+
+    animation: fadeIn;
+    animation-duration: 500ms;
+    animation-delay: 250ms;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
+.block:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: right;
+    background-color: rgba(21, 21, 21, 0.9);
+    position: relative;
+    transform: scaleX(1);
+    transition: transform linear 300ms;
+}
 
-.block:hover {
-    transform: skew(-30deg, 0) scale(1.1, 1.1);
+.block:hover h1 {
+    transform: skewX(30deg) scale(1.2);
+}
+
+.block:hover:before {
+    transform: scaleX(0);
 }
 
 .block h1 {
-    box-sizing: border-box;
-    line-height: 260px;
-    font-size: 40px;
     transform: skewX(30deg);
-    width: 100%;
+    text-shadow: 0 0 5px #1c1c1c;
+    line-height: 100vh;
     text-align: center;
-    color: whitesmoke;
-    position: relative;
-}
-
-.block h1:hover::after {
-    content: ' ';
     position: absolute;
-    top: 50%;
+    transition: transform linear 300ms;
     left: 0;
+    top: 0;
     width: 100%;
-    height: 3px;
-    background: lightgray;
-    animation-name: strike;
-    animation-duration: 250ms;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    transform: skewX(-30deg);
-}
-
-@keyframes strike {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
-.block.advanced {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./img/test_scew_50.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    z-index: 9999;
+    cursor: pointer;
 }
 
 .block.simple {
-    background-color: #151515;
+    left: 0;
+    background-image: url("./img/simple.png");
 }
 
-
-.pop-in {
-    animation: popIn;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+.block.advanced {
+    left: 50vw;
+    background-image: url("./img/advanced.png");
 }
 
-@keyframes popIn {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10%);
     }
     to {
         opacity: 1;
-        transform: initial;
     }
 }
 
